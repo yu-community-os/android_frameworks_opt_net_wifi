@@ -1259,6 +1259,7 @@ public class WifiStateMachine extends StateMachine implements WifiNative.WifiRss
         mWifiMonitor.registerHandler(mInterfaceName, WifiMonitor.WPS_OVERLAP_EVENT, getHandler());
         mWifiMonitor.registerHandler(mInterfaceName, WifiMonitor.WPS_SUCCESS_EVENT, getHandler());
         mWifiMonitor.registerHandler(mInterfaceName, WifiMonitor.WPS_TIMEOUT_EVENT, getHandler());
+        mWifiMonitor.registerHandler(mInterfaceName, WifiMonitor.SUBNET_STATUS_UPDATE_EVENT, getHandler());
 
         final Intent intent = new Intent(WifiManager.WIFI_SCAN_AVAILABLE);
         intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY_BEFORE_BOOT);
@@ -5327,6 +5328,9 @@ public class WifiStateMachine extends StateMachine implements WifiNative.WifiRss
                 break;
             case WifiManager.RSSI_PKTCNT_FETCH:
                 s = "RSSI_PKTCNT_FETCH";
+                break;
+            case WifiMonitor.SUBNET_STATUS_UPDATE_EVENT:
+                s = "SUBNET_STATUS_UPDATE_EVENT";
                 break;
             default:
                 s = "what:" + Integer.toString(what);
