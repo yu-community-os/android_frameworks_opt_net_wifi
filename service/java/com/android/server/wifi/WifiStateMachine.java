@@ -6854,10 +6854,10 @@ public class WifiStateMachine extends StateMachine implements WifiNative.WifiRss
                     if(!mLastBssid.equals((String) message.obj)) {
                         mLastBssid = (String) message.obj;
                         sendNetworkStateChangeBroadcast(mLastBssid);
-                        mDriverRoaming = true;
-                        sendMessageDelayed(obtainMessage(CMD_IP_RECHABILITY_SESSION_END,
-                                           0, 0), 10000);
                     }
+                    mDriverRoaming = true;
+                    sendMessageDelayed(obtainMessage(CMD_IP_RECHABILITY_SESSION_END,
+                                       0, 0), 10000);
                     break;
                 case CMD_RSSI_POLL:
                     if (message.arg1 == mRssiPollToken) {
